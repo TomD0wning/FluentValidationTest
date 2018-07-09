@@ -10,5 +10,6 @@ namespace FluentValidationTest
         public string StoreName { get; set; }
         public bool IsOpen { get; set; }
         public int StoreType { get; set; }
+
     }
 }

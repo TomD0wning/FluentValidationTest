@@ -7,8 +7,7 @@ namespace FluentValidationTest
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine("Hello FluentValidation. Lets create & validate a store");
+            Console.WriteLine("Lets create & validate a store");
 
             StoreValidator validator = new StoreValidator();
 
@@ -21,7 +20,7 @@ namespace FluentValidationTest
             {
                 foreach (var failure in result.Errors)
                 {
-                    Console.WriteLine(failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                    Console.WriteLine(failure.PropertyName + " is invalide. Error: " + failure.ErrorMessage);
                 }
             }
             else
@@ -36,6 +35,7 @@ namespace FluentValidationTest
 
         public static Store createStore()
         {
+
             Store store = new Store();
             Console.WriteLine("\nEnter details for a store.");
 
@@ -43,19 +43,11 @@ namespace FluentValidationTest
             store.StoreName = Console.ReadLine();
 
             Console.WriteLine("\nStore number. From 0-9999");
-           // bool a = true;
-            while(true)
-            try
-            {
-                store.StoreNumber = int.Parse(Console.ReadLine());
-                    break;
-            }
-            catch(Exception e) {
-                    Console.WriteLine("Only numbers are permitted, try again.");
-            }
+            store.StoreNumber = RequestNumber();
 
-            Console.WriteLine("\nStore type from 0-4");
-            store.StoreType = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nStore type. From 0-4");
+            store.StoreType = RequestNumber();
+
 
             return store;
         }
@@ -63,6 +55,20 @@ namespace FluentValidationTest
         public static void PrintStore(Store s)
         {
             Console.WriteLine("{0} | {1} | {2} | {3}", s.StoreNumber, s.StoreName, s.StoreType, s.IsOpen);
+        }
+
+        public static int RequestNumber()
+        {
+            while (true) { 
+
+            try
+            {
+                return int.Parse(Console.ReadLine());
+
+            } 
+            catch (Exception e)
+            { Console.WriteLine("Only numbers are permitted, try again."); }
+        }
         }
 
     }
