@@ -43,7 +43,16 @@ namespace FluentValidationTest
             store.StoreName = Console.ReadLine();
 
             Console.WriteLine("\nStore number. From 0-9999");
-            store.StoreNumber = int.Parse(Console.ReadLine());
+           // bool a = true;
+            while(true)
+            try
+            {
+                store.StoreNumber = int.Parse(Console.ReadLine());
+                    break;
+            }
+            catch(Exception e) {
+                    Console.WriteLine("Only numbers are permitted, try again.");
+            }
 
             Console.WriteLine("\nStore type from 0-4");
             store.StoreType = int.Parse(Console.ReadLine());
