@@ -20,7 +20,7 @@ namespace FluentValidationTest
             {
                 foreach (var failure in result.Errors)
                 {
-                    Console.WriteLine(failure.PropertyName + " is invalide. Error: " + failure.ErrorMessage);
+                    Console.WriteLine(failure.PropertyName + " is invalid. Error: " + failure.ErrorMessage);
                 }
             }
             else
